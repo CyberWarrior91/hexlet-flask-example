@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Example application</title>
+    </head>
+    <body>
+        <h1>Users</h1>
+        <a href="/users/login">Login</a>
+        <a href="/users/new">New user</a>
+        {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% if session %}
+        <h2>Hello, {{ session.email }}!</h2>
+        <form action="{{ url_for('delete_session') }}" method="post">
+            <input type="submit" value="Sign Out">
+        </form>
+        {% endif %}
+        {% if users %}
+            {% for user in users %}
+                <div>{{ user.nickname }}: {{ user.email }}</div>
+                <a href="/users/{{ user.id }}/edit">Edit</a>
+                <form action="{{ url_for('delete_user', id=user.id)}}" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            {% endfor %}
+        {% endif %}
+        </body>
+</html>
