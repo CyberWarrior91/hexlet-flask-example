@@ -1,1 +1,0 @@
-{"nickname": "ad", "email": "vladkhleborodov@mail.ru", "id": "9763d3a4-6a80-4603-b07d-57a1c8fa94b4"}
